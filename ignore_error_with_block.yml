@@ -1,0 +1,27 @@
+# for suppose, we don't know that where the error is present for that we are writing in block
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - block:
+    - name: displaying the files in localhost
+      command: "ls /home/ansible"           
+      register: nagendra               
+    - name: disply the ansible files  
+      debug:                           
+        msg: "{{nagendra}}"
+
+    - name: displaying the files in localhost
+      command: "ls /home/ansible/jana"           
+      register: nagendra 
+    - name: disply the jana files
+      debug:                          
+        msg: "{{nagendra}}" 
+
+    - name: displaying the files in localhost
+      command: "ls /home/ansible/nagendra"            
+      register: nagendra               
+    - name: disply the nagendra files 
+      debug:                           
+        msg: "{{nagendra}}" 
+    ignore_errors: yes          

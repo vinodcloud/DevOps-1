@@ -1,0 +1,18 @@
+
+
+# It will display packages
+
+
+---
+- name: using the include var
+  hosts: webservers
+  become: yes
+  tasks:
+  - include_vars: required_for_variable_{{ansible_os_family}}.yml
+  - debug:
+      msg: "pkg= name {{pkg}}"
+
+
+# The include_vars will call the two servers yml files
+
+# i.e required_for_variable_RedHat.yml and required_for_variable_Debian.yml

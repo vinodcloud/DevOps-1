@@ -1,0 +1,6 @@
+---
+- name: install the jenkins
+  hosts: 172.31.37.70
+  become: yes
+  roles:
+  - {role: maven_installation}

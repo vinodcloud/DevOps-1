@@ -1,0 +1,14 @@
+---
+- name: On windows system create the file
+  hosts: win
+  tasks:
+  - name: create a file 
+    win_file:
+     path: C:\Users\Administrator\Desktop\nag.txt
+     state: touch 
+
+  - name: Install firefox
+    win_chocolatey:
+     name: Firefox
+     state: present  
+  

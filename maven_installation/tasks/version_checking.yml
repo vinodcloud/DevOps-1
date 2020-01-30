@@ -1,0 +1,9 @@
+---
+- name: Check if java is installed
+  command: mvn -version
+  become_user: '{{ global_vars.user_session }}' // your user session
+  register: mvn_result
+  - name: display the maven version
+    debug:
+     msg: "Success - Java is installed"
+    when:  mvn_result is success

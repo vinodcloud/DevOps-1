@@ -1,0 +1,20 @@
+---
+- name: create the file and install apache2
+  hosts: ubuntuservers
+  become: yes
+  tasks:
+  - name: create file
+    file:
+      path: /home/ansible/sample.txt
+      owner: ansible
+      group: ansible
+      mode: '0644'
+      state: touch
+  - name: install apache2
+    apt:
+      name: apache2
+      state: latest
+  - name: place sample file apache2 directory
+    template:
+      src: index.html 
+      dest: /var/www/html

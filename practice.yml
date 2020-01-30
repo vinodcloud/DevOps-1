@@ -1,0 +1,114 @@
+---
+- name: This is practice session
+  hosts: webservers
+  become: yes                             # sudo permissions
+  gather_facts: true                      # it will display the system details
+  vars:                                   # variables declaration
+   ubuntu: apache2
+   redhat: httpd
+  tasks:
+  - block:                                # this block is used to execute the tasks
+    - name: updating the repos
+      apt:
+        name: "*"                         # updating the repository
+        state: latest
+    - name: install apache2
+      apt:
+        name: "{{ubuntu}}"
+        state: present
+      tags: apache2                       # tags are used to run specific task only
+      notify: start apache2               # this notify gives the notification if any change
+    - name: copy the index into apache2
+      template:                           # template must be jinja2 format
+        src: index.j2
+        dest: /var/www/html/index.html
+      notify: start apache2
+    - name: start the apache2
+      service:
+        name: "{{ubuntu}}" 
+        state: started
+        enabled: yes                     # it will start automatically when the system is booting
+      notify: start apache2 
+    rescue:                               # this task is excute when the first task is fail
+    - name: loop
+      apt:
+        name: "{{item}}"
+        state: present
+      loop:                                # this is the loop concept
+      - tree
+      - wget  
+    - name: create the diretory
+      command: mkdir /home/ansible/nagu"{{ item }}" # linux command excecution
+      register: condition
+      with_items:                         # without iteration
+      - nagu
+      - jana
+
+    - name: install git
+      apt:
+        name: git
+        state: present 
+      when: condition.stderr ==""         # if condition is satisfied then the git will install
+  
+    when: ansible_os_family =="Debian"
+    ignore_errors: yes               # this is used to skip the task when there is any error
+  - debug:
+     msg: "successfull install the all tasks"
+
+#   this is for redhat machine
+  
+  - block:
+    - name: install httpd in redhat
+      yum:
+        name: "{{redhat}}"
+        state: present
+      notify: start httpd 
+    - name: copy the index into redhat
+      template:
+        src: index.j2
+        dest: /var/www/html/index.html
+      notify: start httpd
+    - name: start the httpd
+      service:
+        name: "{{redhat}}" 
+        state: started
+        enabled: yes 
+      notify: start httpd     
+    when: ansible_os_family =="RedHat"
+    ignore_errors: yes
+    rescue:
+     
+    - name: create the file                # create file using touch command
+      file:
+        path: /home/ansible/production/nag.txt
+        state: touch
+    always:                               # this will always excute at any time
+    - name: install git in redhat
+      yum:
+        name: git
+        state: present
+      notify: remove git                 # it will remove the git with handler
+
+  - debug:
+     msg: "successfull install the all tasks"
+
+
+     
+    
+
+
+  handlers:                                # this is used to triggen when there is any change in task
+  - name: start apache2
+    service:
+      name: "{{ubuntu}}"
+      state: restarted
+
+  - name: start httpd  
+    service:
+      name: "{{redhat}}"
+      state: restarted  
+ 
+  - name: remove git
+    yum:
+      name: git
+      state: absent

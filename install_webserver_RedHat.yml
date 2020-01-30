@@ -1,0 +1,10 @@
+---
+- name: install webserver on Redhat
+  yum:
+    name: httpd
+    state: present
+- name: start webserver
+  service:
+    name: httpd
+    state: started
+    

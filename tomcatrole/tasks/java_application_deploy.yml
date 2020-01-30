@@ -1,0 +1,9 @@
+---
+- name: deploy java application
+  get_url:
+    url: http://54.213.76.61:8081/artifactory/NAGENDRA/{{my}}/target/mahaLogin-1.0.war
+    dest: /opt/tomcat/webapps/mahaLogin.war
+    username: admin
+    password: password
+    force_basic_auth: yes
+  notify: restart tomcat  

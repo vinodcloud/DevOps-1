@@ -1,0 +1,81 @@
+
+---------------------------to give public access-------------
+ {
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:ListAllMyBuckets"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": ["arn:aws:s3:::nag464"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": ["arn:aws:s3:::nag464/*"]
+    }
+  ]
+}
+
+
+----------------for route53----------------------
+
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::www.nagendra464.tk/*"
+        }
+    ]
+}
+
+---------------------------to access for a floder--------------------
+
+{
+ "Version":"2012-10-17",
+ "Statement": [
+   {
+     "Sid": "AllowUserToSeeBucketListInTheConsole",
+     "Action": ["s3:ListAllMyBuckets", "s3:GetBucketLocation"],
+     "Effect": "Allow",
+     "Resource": ["arn:aws:s3:::*"]
+   },
+  {
+     "Sid": "AllowRootAndHomeListingOfCompanyBucket",
+     "Action": ["s3:ListBucket"],
+     "Effect": "Allow",
+     "Resource": ["arn:aws:s3:::my-company"],
+     "Condition":{"StringEquals":{"s3:prefix":["","home/"],"s3:delimiter":["/"]}}
+    },
+   {
+     "Sid": "AllowListingOfUserFolder",
+     "Action": ["s3:ListBucket"],
+     "Effect": "Allow",
+     "Resource": ["arn:aws:s3:::my-company"],
+     "Condition":{"StringLike":{"s3:prefix":["home/David/*"]}}
+   },
+   {
+     "Sid": "AllowAllS3ActionsInUserFolder",
+     "Effect": "Allow",
+     "Action": ["s3:*"],
+     "Resource": ["arn:aws:s3:::my-company/home/David/*"]
+   }
+ ]
+}

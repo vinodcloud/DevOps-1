@@ -1,0 +1,49 @@
+
+
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows.
+
+
+
+
+echo "# git" >> filename   -----to create filename
+git init
+git add filename
+git commit -m "first commit"      --------versioning
+git remote add origin https://github.com/nagendra464/git.git   -------to connect to remote server
+git push -u origin master   ----- the data from local repostitary to remote repostitary
+git pull             -----------the data from remote repostitary to local repostitary
+git status          -------------to get whether the file is in repostitary or not
+git fetch origin 7eb2bc931f7a2d9c7e5c60b2b2a259585a8e07e8 0r shai history ---to get a specific version
+git checkout FETCH_HEAD ---to get the data
+git checkout master    -----to get back to original data
+  
+
+* git log --all --decorate --oneline --graph --- >to check the history details
+
+*  git config --global --unset alias.lo  --- to delete the alias name
+*  git config --global alias.lo log      ---- to create the alias name
+*  git config --list                    ----- to see all files in config
+*  git merge --abort                    ------ to come out from errors
+
+*  git revert -m 1 <commit-hash>     ----- to revert the merge in remote repository 
+*  git push -u origin master         ----- after revert 
+
+*  git clone -b SIT(branch name) https://github.com/nagendra464/Bank-project.git   ----- to clone particular branch
+*  gitk   -----to view in gui mode
+
+*  git branch -a      ------to view hidden branch
+*  git commit -a      --------to write the commit in vi editor
+*  git reset –-hard [commitid]  --------to reset local repository
+*  git log --follow filename     -----------to view particular commits for a file
+*  git log -p   ----------------to see full project logs
+
+*  git clean -n     ------ clean the untracked files
+*  git clean -f   ------ clean the files when untracked
+*  git clean -di     ----- selection
+
+*  git reset HEAD   ------recover the deletd files in local
+*  git checkout .   ---- recover the deletd files
+

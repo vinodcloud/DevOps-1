@@ -1,0 +1,24 @@
+
+
+* public ip of wordpress instance copy and paste in browser
+* To login in wordpress  type ip/wp-admin
+
+* To get password and user name go to instance and select the instance settings and go the get system log
+
+
+
+
+
+
+$ wget -c http://wordpress.org/latest.tar.gz
+
+
+
+$ tar -xzvf latest.tar.gz
+
+
+sudo rsync -av wordpress/* /var/www/html/
+
+
+
+GRANT ALL PRIVILEGES ON wp_myblogg.* TO 'root'@'localhost' IDENTIFIED BY '12345';

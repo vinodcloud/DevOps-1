@@ -1,0 +1,21 @@
+* Firstly, we have to create two users  (dev,test)
+* Download the role-based plugin from manage jenkins
+* Go to configure global security and enable the role based strategy
+* And then apply and save
+* In manage Jenkins we will find the Manage and Assign Roles
+* And click the manage roles, in that select the global roles and add the Employee to it,and give the only read permissions.
+* Under project roles
+
+    1. Create the developer 
+       Pattern ===Dev.*
+
+    2. Create the Tester
+       Pattern ===Test.* 
+
+* And give the permissions to developer and tester , then apply and save  
+* Under Assign Roles click the global roles and add the two users(dev,test)
+* And select the employee for two users
+* After that we will find the Item roles we will find the groups(developer,tester)
+* And add the two users(dev,test) and give the permissions for respective one
+* And then apply and save
+* And create the projects like Developer and Tester       

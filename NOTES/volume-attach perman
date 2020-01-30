@@ -1,0 +1,12 @@
+*  df -h   ---to see the mount volume
+*  findmnt  ---- to see the filesystem format
+*  lsblk   ----to list the volumes
+*  file -s /dev/xvdf  --- to see the data in volume
+*  mkfs -t ext4 /dev/xvdf   --- to format the volume
+*  mkdir /nagendra   --- create the directory name for volume
+*  mount /dev/xvdf /nagendra/   --- mount the volume
+*  cd /nagendra   ---- to enter into volum
+*  vi /etc/fstab   ---- edit the fstab to make volume attach permanent
+   { /dev/xvdf              /nagendra ext4   defaults                0 0  }
+* sudo mount -o remount/   ---- to remount the volume when we get any issues
+* umount -a    --- to unmount the volume

@@ -1,0 +1,15 @@
+**********************************install the jfrog ***************************************
+* jfrog is the remote repository
+* It is used to deploy the source code (mvn deploy means it will transfer the war file from local repository to remote repository)
+* Firstly we have to register in jfrog artifactory login
+* Create the instance with RHEL machine with minimumn of 4GB Ram
+* Install the java
+* Install the jrog from the instructions which are given in mail
+* And select ARTIFACTORY PRO RPM INSTALLER to install the jfrog
+* The default portnumber is 8081 for jfrog
+* copy the public ip and followed by portnumber in browser
+* And it will ask the user and password
+     By default user === admin
+                password === password
+*                 
+

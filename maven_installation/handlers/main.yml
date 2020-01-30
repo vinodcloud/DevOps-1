@@ -1,0 +1,6 @@
+---
+# handlers file for maven_installation
+- name: restart maven
+  service:
+   name: maven
+   state: restarted

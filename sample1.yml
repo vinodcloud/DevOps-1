@@ -1,0 +1,44 @@
+---
+- hosts: ubuntuservers,redhatservers
+  name: Installing the apache and tree
+  become: yes
+  tasks:
+  - name: Ping the ubuntuservers
+    ping:
+  - name: Install the apache2
+    apt:
+      name: "{{installapache2}}"
+      state: "{{webserstate}}"  
+    when: ansible_os_family =="Debian"  
+  - name: start apache
+    service:
+      name: "{{installapache2}}"
+      state: "{{webserverstart}}"
+      enabled: yes   
+    when: ansible_os_family =="Debian"  
+  - name: Install the tree
+    apt:
+      name: "{{installtree}}"
+      state: "{{webserstate}}"   
+    when: ansible_os_family =="Debian"  
+
+  - name: Install apache2 in redhat
+    yum:
+      name: "{{installapache2}}"
+      state: "{{javastate}}"  
+    when: ansible_os_family =="RedHat"  
+  - name: start apache2
+    service:
+      name: "{{installapache2}}"
+      state: "{{webserverstart}}"
+      enabled: yes
+    when: ansible_os_family =="RedHat"   
+  - name: place the index file in apache2
+    template:
+      src: index.j2
+      dest: /var/www/html/index.html
+    when: ansible_os_family =="RedHat"   
+     
+      
+    
+    

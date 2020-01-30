@@ -1,0 +1,7 @@
+* Download the jenkins war file from official website
+* And place the war file in floder
+* open the floder right click the git bash
+* And enter the command java -jar jenkins.war
+* After installation jenkins on windows
+* The password is located at C:\Users\Nagendra.bheemuni\.jenkins\secrets
+* In browser type the http://localhost:8080

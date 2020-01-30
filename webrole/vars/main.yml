@@ -1,0 +1,11 @@
+---
+# vars file for webrole
+install_apache_ubuntu: apache2
+install_http_redhat: httpd
+install_git: git
+install_tree: tree
+install_wget: wget
+family_u: ansible_os_family =="Debian"
+family_r: ansible_os_family =="RedHat"
+dest_path: /var/www/html/index.html
+file_path: /home/ansible/nag.txt

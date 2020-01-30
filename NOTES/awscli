@@ -1,0 +1,42 @@
+
+-------------------------chocolatey--------------------
+
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+* Type choco search awscli -to search
+* Type choco install awscli
+
+
+
+
+aws s3 cp "C:\Users\Nagendra.bheemuni\Desktop\Vlava" s3://nagu464 --recursive
+
+
+
+
+* aws s3 ls s3://name to list the objects 
+
+* aws s3 ls s3://name/foldername/ to view list
+
+*  aws s3 mb s3: //name to create bucket
+
+* aws s3 mb s3://name --region us-east-1 to specify the region
+
+* aws s3 rb s3://name to remove bucket
+
+* aws s3 cp "filepath" s3://name/  to copy files into s3
+
+* aws s3 cp "filepath" s3://name/ --storage-class REDUCED_REDUNDANCY
+\\\change the standard class to redundancy class
+
+* aws s3 sync . s3://name/  All local folders files will upload in s3
+
+* aws s3 sync . s3://name/ --delete  If some files are deleted in local folder automataically deleted in s3
+
+* aws s3 sync s3://name/ . From s3 will download to local files if we are upload to s3
+
+* aws s3 sync s3://name/ . --delete 
+   
+* aws s3 sync . s3://name --include *.html --exclude *.css
+
+* aws s3 cp "C:\Users\Nagendra.bheemuni\Desktop\Vlava" s3://nagu464 --recursivee   - to upload the files

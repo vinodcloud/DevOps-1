@@ -1,0 +1,11 @@
+---
+- name: remove the java package
+  hosts: ubuntuservers
+  become: yes
+  tasks: 
+  - name: remove the java in ubuntu machine
+    package:
+      name: "{{installjava}}"
+      state: "{{webabsent}}"
+      autoremove: yes
+    when: ansible_os_family =="Debian"  

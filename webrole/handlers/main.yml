@@ -1,0 +1,23 @@
+---
+# handlers file for webrole
+- name: service apache2 restart
+  service:
+    name: "{{install_apache_ubuntu}}"
+    state: restarted
+
+- name: service http restart
+  service: 
+    name: "{{install_http_redhat}}" 
+    state: restarted   
+
+
+- name: service apache2 absent
+  service:
+    name: "{{install_apache_ubuntu}}" 
+    state: absent  
+
+- name: service http absent
+  service:
+    name: "{{install_http_redhat}}" 
+    state: absent 
+      

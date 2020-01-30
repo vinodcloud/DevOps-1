@@ -1,0 +1,14 @@
+---
+- name: copy index file in ubuntu
+  template:
+   src: index.j2
+   dest: /var/www/html/index.html
+  notify: service apache2 restart
+  when: ansible_os_family =="Debian"
+
+- name: copy index file in redhat
+  template:
+   src: index.j2
+   dest: /var/www/html/index.html
+  notify: service http restart
+  when: ansible_os_family =="RedHat"

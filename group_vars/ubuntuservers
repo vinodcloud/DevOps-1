@@ -1,0 +1,8 @@
+---
+installapache2: apache2
+webserstate: present
+# for start the webservers
+webserverstart: started
+installtree: tree
+installjava: openjdk-9-jre
+webabsent: absent

@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: linux commands execution
+    command: "ls /home/ansible"           
+    register: nagendra               
+  - name: disply the result  
+    debug:                           
+     msg: "{{nagendra}}"
+  - name: linux commands execution
+    command: "ls /home/ansible/jana"           
+    register: nagendra 
+    ignore_errors: yes            # it will display some output stderr": "ls: cannot access '/home/ansible/jana' 
+  - name: disply the result  
+    debug:                          
+     msg: "{{nagendra}}"  
+  - name: linux commands execution
+    command: "ls /home/ansible/nagendra"            
+    register: nagendra               
+  - name: disply the result  
+    debug:                           
+     msg: "{{nagendra}}"     

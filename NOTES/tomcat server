@@ -1,0 +1,202 @@
+Prerequisites
+EC2 instance with Java v1.8.x
+Install Apache Tomcat
+Download tomcat packages from https://tomcat.apache.org/download-80.cgi onto /opt on EC2 instance
+
+  # create tomcat directory
+  cd /opt
+  wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
+  tar -xvzf /opt/apache-tomcat-8.5.35.tar.gz
+give executing permissions to startup.sh and shutdown.sh which are under bin.
+
+   chmod +x /opt/apache-tomcat-8.5.35/bin/startup.sh shutdown.sh
+create link files for tomcat startup.sh and shutdown.sh
+
+  ln -s /opt/apache-tomcat-8.5.35/bin/startup.sh /usr/local/bin/tomcatup
+  ln -s /opt/apache-tomcat-8.5.35/bin/shutdown.sh /usr/local/bin/tomcatdown
+  tomcatup
+check point :
+access tomcat application from browser on prot 8080
+http://<Public_IP>:8080
+
+Using unique ports for each application is a best practice in an environment. But tomcat and Jenkins runs on ports number 8080. Hence lets change tomcat port number to 8090. Change port number in conf/server.xml file under tomcat home
+
+cd /opt/apache-tomcat-8.5.35/conf
+# update port number in the "connecter port" field in server.xml
+# restart tomcat after configuration update
+tomcatdown
+tomcatup
+check point :
+access tomcat application from browser on prot 8090
+http://<Public_IP>:8090
+
+now application is accessible on port 8090. but tomcat application doesnt allow to login from browser. changing a default parameter in context.xml does address this issue
+
+#search for context.xml
+find / -name context.xml
+above command gives 3 context.xml files. comment () Value ClassName field on files which are under webapp directory. After that restart tomcat services to effect these changes
+
+tomcatdown
+tomcatup
+Update users information in the tomcat-users.xml file goto tomcat home directory and Add below users to conf/tomcat-user.xml file
+
+	<role rolename="manager-gui"/>
+	<role rolename="manager-script"/>
+	<role rolename="manager-jmx"/>
+	<role rolename="manager-status"/>
+	<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+	<user username="deployer" password="deployer" roles="manager-script"/>
+	<user username="tomcat" password="s3cret" roles="manager-gui"/>
+	
+	  1  yum update
+    2  yum install java-1.8*
+    3  java -version
+    4   pwd
+    5  cd /opt
+    6  yum install wget -y
+    7  ls
+    8  wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
+    9  ls
+   10  tar -zvxf apache-tomcat-8.5.47.tar.gz
+   11  ll
+   12  cd apache-tomcat-8.5.47
+   13  ll
+   14  cd bin
+   15  ll
+   16  chmod -x startup.sh
+   17  chmod -x shutdown.sh
+   18  ll
+   19  ./startup.sh
+   20  chmod -x startup.sh
+   21  ll
+   22  echo $PATH
+   23  chmod -X startup.sh
+   24  ll
+   25  chmod -x startup.sh
+   26  ll
+   27  chmod 777 startup.sh
+   28  ll
+   29  chmod 777 shutdown.sh
+   30  ll
+   31  echo $PATH
+   32  pwd
+   33  ln -s /opt/apache-tomcat-8.5.47/bin
+   34  ln -s /opt/apache-tomcat-8.5.47/bin/startup.sh /usr/local/sbin/tomcatstart
+   35  tomcatstart
+   36  ps -ef | grep tomcat
+   37  pwd
+   38  cd ..
+   39  ll
+   40  cd conf
+   41  ll
+   42  vi server.xml
+   43  cd ..
+   44  ll
+   45  cd bin
+   46  ll
+   47  ./shutdown.sh
+   48  ps -ef | grep tomcat
+   49  ./startup.sh
+   50  ps -ef | grep tomcat
+   51  find / -name context.xml
+   52  vi /opt/apache-tomcat-8.5.47/webapps/host-manager/META-INF/context.xml
+   53  vi /opt/apache-tomcat-8.5.47/webapps/manager/META-INF/context.xml
+   54  ./shutdown.sh
+   55  tomcartstart
+   56  ps -ef | grep tomcat
+   57  tomcatstart
+   58  ps -ef | grep tomcat
+   59  cd ..
+   60  ls
+   61  cd conf
+   62  ls
+   63  vi tomcat-users.xml
+   64  pwd
+   65  ll
+   66  cd ..
+   67  ll
+   68  cd bin
+   69  ./shuntdown.sh
+   70  ll
+   71  ./shutdown.sh
+   72  tomcatstart
+   73  ps -ef | grep tomcat
+   74  cd ..
+   75  cd
+
+	------------------------------------ubuntu16-----------------------------------------------------
+	  apt-get update
+    2  java -version
+    3  apt-get install oracle-java8-installer
+    4  apt-get install java -1.8*
+    5  apt-get install java-1.8*
+    6  java -version
+    7  apt-get install java
+    8  apt-get install oracle-java8-installer
+    9  add-apt-repository ppa:webupd8team/java
+   10  apt-get install oracle-java8-installer
+   11  apt-get update
+   12  apt-get install oracle-java8-installer
+   13  apt-get install oracle-java9-installer
+   14  java -version
+   15  apt-get install default-jre
+   16  java -version
+   17  apt-get install oracle-java8-set-default
+   18  apt-get update
+   19  apt-get install tomcat8
+   20  apt-get install tomcat8.docs tomcat8.examples tomcat8.admin
+   21  systemctl start tomcat8
+   22  ps -ef | grep tomcat
+   23  systemctl restart tomcat8
+   24  pwd
+   25  cd bin
+   26  cd /opt
+   27  ll
+   28  cd ..
+   29  cd /var
+   30  ll
+   31  cd lib
+   32  ll
+   33  tomcat8
+   34  cd tomcat8
+   35  ll
+   36  cd conf   --- change the 
+   37  ll
+   38  vi tomcat-users.xml
+   39  cd ../
+   40  cd ..
+   41  cd / /
+   42  cd ..
+   43  cd
+   44  systemctl restart tomcat8
+   45  ps -ef | grep tomcat
+
+
+
+TOMCAT INSTALLATION ON UBUNTU:
+
+>>sudo -i
+>>apt-get update
+>>install java ==> apt-get install default-jdk
+>>check java version
+>>java -version
+
+>> apt-get install tomcat8
+
+>>apt-get install tomcat8.docs tomcat8.examples tomcat8.admin
+
+>>
+
+>> systemctl tomcat8 status
+
+>>nano  /var/lib/tomcat8/conf/tomcat-users.xml
+==>>you open the nano editor you can last line and give some data like this
+
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<user username="nagu" password="1234" roles="manager-gui,admin-gui"/>
+
+==> save =crtl+x and y and enter
+
+>>systemctl restart tomcat8
+

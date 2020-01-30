@@ -1,0 +1,85 @@
+
+----------------------------------USER AND GROUP-----------------------------------------------------------------
+
+* usermod -l newname oldname - to change user name
+* adduser name - to create user
+* mv filename .filename - to hide files
+* getfacl filename/ - to get details of the file with permissions
+* setfacl -m u:username:rwx filename - to set permission for user
+* groupadd groupname - create the group
+* gpasswd -M user1,user2 groupname - to add multiple users in group
+* setfacl -m g:groupname:permissions(rwx) filepath - to set permissions to group
+* setfacl -b filepath - to delete permissions
+*SUDO -substitute user do & super user do
+
+---------------------------------COMMANDS--------------------------------------------------------------
+
+*  : set number in vi editor
+* cat -n filename  to give  number series 
+* cat -n filename >> another filename
+* cat filename | sed 'number!d'  $ sed -n 14p filename to get specific line
+* shift+zz to sive file data
+* mv filename .filename - how to hide files
+* cat filename >> anotherfilename - to copy files
+* :line number in vi editor to get the curser
+* ls -al - to view hide files
+* usermod -l newname oldname - to change username
+* passwd -l username - to lock the user
+* groupadd groupname - to create group
+* cat /etc/group - to see the groupnames
+* usermod -g groupname username - to add in group
+* userdel -r username - to delete the user
+* cat filename | grep -i searchword  - it will display relative to searchword & case sensitive letters
+* cat filename | grep -v searchword - it will display all data but the searchword will not be displayed
+* cat filename | grep searchword - it will highted the word in the file
+* cat filename | grep -in searchword - it will display the where the word is present in line
+* cat filename | grep -w searchword - it will only dispalyed the searched word
+* cat filename | grep -i ^particularletter  - it will display with particularletter
+* cat filename | grep -i "word$" - it will display the ending with word
+* cat filename | grep word -A 2 - it wil display the below two lines from word
+* cat filename | grep word -B 2 - it will display the above two lines from word
+* cat filename | grep word -C 2 - it will display the above and below lines from word
+* cat filename | grep -c word - it will count the word in file and display the number
+* ll | grep filename - it will display the particular filename
+* sed '2d' filename - it will delete the 2nd line
+* cat filename | sed 's/oldname/newword/g' - it will replace the word & '2s/old/new/g it will only modify the second line
+* sed '$d' filename - it will delete the lastline
+* sed '2,3d' filename - it will delete the 2nd 3rd lines from file
+* sed '/searchword/d' - it will delete the searchword line from file
+* xargs -r to print in horizontally
+* cat filename | xarg -r | sed 's/ /.pdf|/g' - to give file extensions in files
+
+------------------------------------------------------LINUX BASICS------------------------------------------------
+
+* cd /var/www/html to see the html file
+* ls to see the file name
+* vi filename
+* :w to save the file
+* :q to quit
+* gg to enter into first line
+* dG to delete enter data
+* cat filename to see the data
+* touch filenames file creation
+* cd /filename to enter into floder
+* ls -ltr to view all files
+* :wq save and exit
+* ctrl+c to clear the screen
+* echo > index.html to print
+* df -h to see the file system volume
+* ll - longlist
+* du -sh display size file
+* ls -sh display the size
+*
+
+------------------------------------------VOLUMES-------------------------------------------------
+
+
+* fdisk -l & lsblk to view the volume
+* mkfs.ext4 /dev/xvdf  format
+* mkdir filename give the file name
+* mount  /dev/xvdf /app for connection
+* df -h to check the size
+* umount filename/
+* resize2fs /dev/xvdf to resize the volume
+* apt-get install cloud-guest-utils to increase the root volume parition
+* growpart /dev/xvda 1 for file system of root volume

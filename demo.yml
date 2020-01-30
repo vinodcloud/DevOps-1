@@ -1,0 +1,14 @@
+---
+- hosts:
+        localhost
+  become: yes
+  tasks:
+  - name: start
+    apt:
+     name: apache2
+     state: present
+     update_cache: yes 
+  - name: staert service
+    service:
+     name: apache2
+     state: restarted  

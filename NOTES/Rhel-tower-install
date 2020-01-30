@@ -1,0 +1,24 @@
+ 1  yum update
+    2  adduser ansible
+    3  passwd ansible
+    4  visudo
+    5  vi /etc/ssh/sshd_config
+    6  service sshd restart
+    7  yum install python
+    8  yum install python36
+    9  python
+   10  python -v
+   11  alternatives --set python /usr/bin/python3
+   12  python -v
+   13  python -V
+   14  su - ansible
+   15  yum -y install python3-pip
+   16  su - ansible
+   17  cd /opt/
+   18  ll
+   19  tar xvzf ansible-tower-setup-latest.tar.gz
+   20  ll
+   21  cd  ansible-tower-setup-3.6.1-1
+   22  ll
+   23  vi inventory
+   24  ./setup.sh

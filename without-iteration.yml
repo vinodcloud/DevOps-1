@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: create the diretory
+    command: mkdir /home/cm/"{{ item }}"
+    with_items:
+    - nagu
+    - jana
+  

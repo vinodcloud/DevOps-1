@@ -1,0 +1,5 @@
+---
+- name: install java on ubuntu
+  apt:
+    name: openjdk-9-jre
+    state: present

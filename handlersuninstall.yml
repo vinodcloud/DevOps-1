@@ -1,0 +1,21 @@
+# remove apache using handler
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: install apache2
+    apt:
+     name: apache2
+     state: present
+    notify: remove                # using notify module we can handle the task
+  - name: install tree
+    apt:
+     name: tree
+     state: present
+    
+  handlers:                      # using handler we can reuse the code
+  - name: remove  
+    apt:
+     name: apache2
+     state: absent
+   

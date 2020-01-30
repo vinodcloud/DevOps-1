@@ -1,0 +1,34 @@
+To install the aws in desktop
+    1.From google-Type AWS Console
+	2.Create new account in aws
+	
+
+For interface the windows to linux we use the GIT BASH
+     1.we install the GIT for windows software
+	
+	
+After creating the aws account we should login 
+   1.create the ec2instance( launch instance)
+   2.install the UBUNTO
+   3.select the free trail version with 1GB Ram 
+   4.give the secuirty configuration(add rule-HTTP-anywhere)
+   5.Download the .PEM file
+   6.launch the instance
+After that at the top we will find out the Connect option so click that option
+  we can the example..........SSH code copy the code.
+
+
+Now near the .PEM file click the right click button we must select the GIT BASH option
+
+ # Popup window open like (Nagendra.bheemuni@DESKTOP-QIGIRK8 MINGW64 ~/Desktop)
+ # Paste the SSH code type yes
+ # After the we can find like this (ubuntu@ip-172-31-32-132:~$)
+ # Type sudo -i( because it will direct to root ip)
+ # After this we can see (root@ip-172-31-32-132:~# )we can see #
+ # Type apt-get update(to download any default softwares)
+ # Type apt-get install apache2(for webserver)
+ # Type service apache2 status( To check the Status whether the apache2 server is running or not)
+ 
+And goto aws console we can find the instance is running in aws we can start or stop the instance
+  
+  

@@ -1,0 +1,41 @@
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - block:
+    - name: Install the apache2
+      apt:
+       name: apache2
+       state: present  
+    - name: start apache
+      service:
+       name: apache2
+       state: started
+    - name: place the index file in apache2
+      template:
+       src: index.j2
+       dest: /var/www/html/index.html    
+    when: ansible_os_family =="Debian" 
+    ignore_errors: yes
+  - block:
+    - name: Install the httpd
+      yum:
+       name: httpd
+       state: present    
+    - name: start apache2
+      service:
+       name: httpd
+       state: started  
+    - name: place the index file in apache2
+      template:
+       src: index.j2
+       dest: /var/www/html/index.html
+    when: ansible_os_family =="RedHat"
+    ignore_errors: yes       # it won't show any failure tasks in results
+  - debug:
+     msg: "successfull install the all tasks" 
+         
+     
+      
+    
+    

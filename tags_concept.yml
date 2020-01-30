@@ -1,0 +1,25 @@
+# tags are used to fliter the tasks and to run particular task( --tags "tagname" )
+#  ansible-playbook -i myhosts tags_concept.yml  --skip-tags "tree"
+
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: install apache2
+    apt:
+     name: apache2
+     state: present
+    tags:
+     - apache2
+  - name: start apache2
+    service:
+     name: apache2
+     state: started
+    tags:
+    - start_apache2
+  - name: install tree
+    apt:
+     name: tree
+     state: present
+    tags: 
+    - tree        

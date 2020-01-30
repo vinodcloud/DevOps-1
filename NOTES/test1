@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: create instance
+    ec2:
+     key_name: ohioo
+     instance_type: t2.micro
+     image: ami-0cd2464e563ef52b1
+     wait: yes
+     region: us-east-2
+     instance_tags:
+        Name: dynamic_node
+     group: Ansible
+     count: 1
+     vpc_subnet_id: subnet-6080322c
+     assign_public_ip: yes
+~
+~
+
+$ export ANSIBLE_HOSTS=/etc/ansible/ec2.py
+$ export EC2_INI_PATH=/etc/ansible/ec2.ini 
+
+
+pip list | grep -F boto

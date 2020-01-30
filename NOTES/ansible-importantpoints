@@ -1,0 +1,12 @@
+* alternatives --config java - check the java versions
+* which java - to see the java location
+* ls -ltr /usr/bin/jvm - to see the java
+* /usr/lib/jvm/jre-1.8.0-openjdk/bin/java - this the path of java*
+* debug: var=tomcat_url - to check the url is working or not
+* ls -ltr /usr/local -- to see wheather tomcat is install or not
+* remote_src: yes - because it will check the master scr so go and the check the node server
+* nohup and & - it is used for background running process
+* ANSIBLE_KEEP_REMOTE_FILES=1 - to see the module data which we want to see in remote servers
+* will we are ruuning the module command it will create temp directory under .ansible
+* we can make the serial by keeping the forks=1 in ansible.cfg
+* For ssh connection we are getting the prompt meessage to press yes/no,to avoid that we want to uncommit the host_key_checking(false) in ansible.cfg

@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: install apache2
+    apt:
+     name: apache2
+     state: present
+
+  - name: copy the    templete to node
+    template:
+     src: index.j2
+     dest: /var/www/html/index.html
+
+  - name: restart the apache2
+    service:
+     name: apache2
+     state: restarted   

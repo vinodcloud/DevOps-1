@@ -1,0 +1,144 @@
+--------------------YAML--------------------------------{ ansible52/NOTE/ymal.md - 11/11/19 }
+* YAML - yet another markup language
+* YAML - Ain't Markup Language
+* yaml can reable and writable by humans, it is a data serializations language
+* It is used for configuration files
+* Where data is stored and transmitted over the network
+* yaml is the superset of json with additional to new features like new line and indentation( means separated by blocks)
+* yaml extension is .yml or .yaml
+* It is the case sensitive language
+* We use spaces for spacebar. ( tabs are not supported)
+* the date should be space notation.
+
+---------------KEY AND DATA  -----------------------
+
+  what is key?
+  
+  key is used to store any value  .. ex- x:25( where x - key and 25 - value)
+  
+  
+  what is data?
+  
+  * In yaml, data is represented by keys and values.
+         (key with space)
+        examples: my_integer: 34
+		          my_float: 20.0
+				  my_string: nagendra
+				  null value: null
+				  
+				  
+---------------------DATA COLLECTIONS----------------------------
+
+* This is also called SCALAR  representation of data
+
+     * Two types of data collections
+	    1. Sequence data collections
+		2. Map data collections
+		
+	1. Sequence data collections :
+	    ( list of arrays like in python  ex:  x=[1,3,6,])
+		* It is equivalent to list
+		* In yaml variable we call it has key
+		* In yml we represented by x:
+		                            - 1
+									- 3
+									- 6
+			(Values must start with - with one space)
+			
+NOTE : Here any value may also be scalar	(scalar means key_pair representation)
+     
+    2. Map data collections :
+      ( It is equivalent to dictionaries in python)
+	  more than one scalar representation
+	Map representation :
+                 student_name:
+                   nagendra: 25
+                   jana: 26
+                   dileep: 25
+				   
+NOTE: Here any value may also be a list like
+                
+				student_name:
+                   nagendra: 25
+                   jana:
+				     - caption
+					 - age: 26
+                   dileep: 25
+				   
+----------------ORDERED AND UNORDERED DATA COLLECTIONS-----------------------------
+* Sequence are ordered collections
+* map are unordered collections
+				   
+				   
+---------------------------------ANSIBLE PLAYBOOK---------------------------------
+
+* Ansible playbook is a yaml script
+* Ansible playbook is used to send commands to remote servers in a scripted way.
+
+To understand playbook we should konw 3 terms
+     1.Task : Nothing but installing the software
+     2. play : collection of one or more tasks
+     3. playbook : composed of one or more plays
+				   
+				   
+				   
+---------------------------------------WRITE A PLAYBOOK---------------------------------
+
+step 1. --- Which represents the yaml files
+step 2. target section list( like hosts,user etc--)
+step 3. variables ( optional)
+step 4. tasks list (list all the modules that you run, in a order)
+        LIke - copy files,installation etc----
+{ NOTE: arugments nothing but a source and destination when we are copy the files}
+* Each play is a sequence because it start with ifen( - ) .
+* Yaml script cosists of sequences		
+* Each play must start with indentation means space.
+* Sequences are represented by ifen ( - ).
+* Each play is a map or dictionaries.
+
+
+---------------------------------------------VARIABLES---------------------------------------------
+
+* Variable is nothing but key
+* It is nothing but storing some information
+* Variables are represented by 'vars' key.
+* Variables are always sequence(list) or map(dictionaries).
+  Example : vars:
+             var1:
+             vars2:
+  Ex : create a file in remote server with some content		
+
+
+---------------------------------------LOOPS IN ANSIBLE------------------------------------------------------------
+* iteration is nothing but loop
+* Generally loops are used for repeated process
+* playbook supports iteration with with_items, by default it will create a variable called item 
+			
+		---
+- hosts: all
+  become: yes
+  tasks:
+  - name: create the diretory
+    command: mkdir /home/cm/"{{ item }}"
+    with_items:
+    - nagu
+    - jana
+
+-------------------------------------CONDITIONAL STATEMENTS---------------
+* It will check the condition ture or palse
+* It is represented by when expression statement
+   
+   - name: create the file if not present
+     copy:
+	   src: /home/ubuntu/nag.txt
+	   content: "hi this devops"
+	 when: true     or     false(condition)  
+	
+
+
+				   
+	  
+	
+		
+       	
+		

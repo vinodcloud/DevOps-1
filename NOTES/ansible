@@ -1,0 +1,39 @@
+          What is Ansible?
+
+* Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration and provisioning.
+
+          Advantages of Ansible
+
+* Free. Ansible is an open-source tool.
+* Very simple to set up and use. No special coding skills are necessary to use Ansible’s playbooks (more on playbooks later).
+* Powerful. Ansible lets you model even highly complex IT workflows. 
+* Flexible. You can orchestrate the entire application environment no matter where it’s deployed. You can also customize it based on your needs.
+* Agentless. You don’t need to install any other software or firewall ports on the client systems you want to automate. You also don’t have to set up a separate management structure.
+* Efficient. Because you don’t need to install any extra software, there’s more room for application resources on your server
+
+          Ansible’s Features and Capabilities
+		  
+#  Configuration Management
+
+* Ansible is designed to be very simple, reliable and consistent for configuration management. 
+* Ansible configurations are simple data descriptions of an infrastructure, and are both readable by humans and parsable by machines. 
+* All you need to start managing systems is a password or an SSH (Secure Socket Shell, a network protocol) key. An example of how easy Ansible makes configuration management: If you want to install an updated version of a certain type of software on all the machines in your enterprise, all you have to do is write out all the IP addresses of the nodes (also called remote hosts) and write an Ansible playbook to install it on all the nodes, then run the playbook from your control machine.	
+
+# Cloud Provisioning
+
+* The first step in automating your applications’ life cycle is automating the provisioning of your infrastructure. With Ansible you can provision cloud platforms, virtualized hosts, network devices and bare-metal servers.	
+
+# Inventories
+
+* All the machines you’re using with Ansible (the control machine plus nodes) are listed in a single simple file, along with their IP addresses, databases, servers and so on. 
+* Once you list the inventory, you can assign variables to any of the hosts using a simple text file. You can also pull inventory from sources like EC2 (Amazon Elastic Compute Cloud).  
+
+# Playbooks
+
+* Ansible playbooks are like instruction manuals for tasks. They are simple files written in YAML, which stands for YAML Ain’t Markup Language, a human-readable data serialization language. 
+* Playbooks are really at the heart of what makes Ansible so popular because they describe the tasks to be done easily and without the need for the user to know or remember any special syntax. 
+* Not only can they declare configurations, but they can orchestrate the steps of any manually ordered task, and can execute tasks at the same time or at different times.
+
+* Each playbook is composed of one or multiple plays, and the goal of a play is to map a group of hosts to well-defined roles, represented by tasks.
+
+		  

@@ -1,0 +1,9 @@
+---
+- hosts: win
+  tasks:
+  - name: ping the windows server
+    win_ping:
+  - name: install firefox
+    win_chocolatey:
+      name: firefox
+      state: present

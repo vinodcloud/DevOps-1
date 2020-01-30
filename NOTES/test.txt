@@ -1,0 +1,31 @@
+* $psversionTable  to check version
+* password 4BDzx?Iap37PDM85opr.(jxxnJQLFzLJ
+
+
+-------------on ansible server-------
+# apt-get update
+# apt-get install python-pip
+# pip install "pywinrm>=0.3.0"
+
+
+sudo tar -xzvf apache-tomcat-8.5.49.tar.gz
+sudo mv apache-tomcat-8.5.49 /opt/tomcat
+
+
+ssh -i "ohioo.pem" centos@ec2-18-222-121-24.us-east-2.compute.amazonaws.com
+
+
+
+    Username: admin
+    Password: dYzSvZVxWenJ
+ssh -i "ohioo.pem" centos@ec2-52-14-246-83.us-east-2.compute.amazonaws.com
+
+
+ Username: admin
+    Password: MUqSPQAkbHGy
+
+[credentials]
+aws_access_key_id = "AKIAIG3FQ37FERYQFRYA"
+aws_secret_access_key = "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"
+
+

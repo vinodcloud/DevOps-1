@@ -1,0 +1,12 @@
+---
+- name: start apache2 ubuntu
+  service:
+   name: "{{install_apache_ubuntu}}"
+   state: restarted
+  when: ansible_os_family =="Debian"
+
+- name: start http redhat
+  service:
+   name: "{{install_http_redhat}}"
+   state: restarted
+  when: ansible_os_family =="RedHat"  

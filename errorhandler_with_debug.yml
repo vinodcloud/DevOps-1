@@ -1,0 +1,28 @@
+# In this we are going to handle the error depanding on first result, we are giving the conditions based on first result
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: linux commands execution
+    command: hostname -f             # we are executing the linux commands
+    register: nagendra               # register key is used to store value
+  - name: disply the result  
+    debug:                           # debug is used to display the stored value of the key
+     msg: "{{nagendra}}"
+  - name: install apache2
+    apt:
+     name: apache2
+    when: nagendra.stderr ==""      # If condition satisfy it will execute
+  - name: updating the repos
+    apt:
+      name: "*"
+      state: latest
+  - name: install git
+    apt:  
+     name: git
+     state: present 
+    when: nagendra.stderr =="" 
+  - name: install tree
+    apt:
+     name: tree
+    when: nagendra.stderr !=""     # The condition is not satisfy it will not execute 

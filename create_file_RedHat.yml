@@ -1,0 +1,9 @@
+---
+- name: create the file
+  file:
+   path: /home/ansible/production/nag.txt
+   state: touch
+- name: copy file into nag.txt
+  template:
+   src: index.j2
+   dest: /var/www/html/index.html

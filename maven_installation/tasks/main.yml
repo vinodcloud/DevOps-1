@@ -1,0 +1,14 @@
+---
+# tasks file for maven_installation
+- include_tasks: install_java.yml
+- include_tasks: createfloder.yml
+- include_tasks: download_maven.yml
+- include_tasks: classpath.yml
+# - include_tasks: update_permissions.yml
+    
+# - include_tasks: version_checking.yml
+- include_tasks: install_jenkins.yml
+- include_tasks: password.yml
+    
+    
+    

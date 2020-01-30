@@ -1,0 +1,19 @@
+# It is used for errorhandlers,using the ignore_errors condition
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: install git
+    apt:
+     name: git
+
+  - name: install wget 
+    apt:
+     namee: wget
+    ignore_errors: yes      # if we want to skip error task 
+
+  - name: install tree
+    apt:
+     name: tree
+
+

@@ -1,0 +1,6 @@
+---
+- name: copy the class path to node
+  template:
+   src: mavenenv.sh.j2
+   dest: /etc/profile.d/mavenenv.sh
+  notify: restart maven

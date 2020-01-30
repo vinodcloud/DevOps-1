@@ -1,0 +1,26 @@
+# we can reuse the code with the help of handlers by using notify ( redhat)
+---
+- hosts: 172.31.35.207
+  become: yes
+  tasks:
+  - name: Install apache2
+    yum:
+     name: httpd
+     state: present
+    notify: start services   
+  - name: copy index.j2 to node server
+    template:
+     src: index.j2
+     dest: /var/www/html/index.html
+    notify: start services
+
+
+  # under playbook we are going to write handlers 
+
+
+  
+  handlers:
+  - name: start services
+    service:
+     name: httpd
+     state: restarted     

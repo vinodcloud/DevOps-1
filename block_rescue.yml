@@ -1,0 +1,20 @@
+---
+- hosts: webservers
+  become: yes
+  gather_facts: false
+  tasks: 
+  - block:
+    - name: install apache2
+      apt: 
+       name: apache2
+       state: present
+    rescue:           # it will display when the task is not executed
+    - debug:
+       msg: "the given path is not valid"
+    - name: install tree
+      apt: 
+       name: tree
+       state: present      
+    always:
+    - debug:
+       msg: "This is always execute"      

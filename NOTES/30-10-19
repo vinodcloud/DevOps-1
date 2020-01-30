@@ -1,0 +1,23 @@
+30-oct-19:
+Super user or root user
+Super user or the root user is the most powerful user. He can do anything as admin user.
+System user
+System users are the users created by the softwares or applications. For example if we install Apache it will create a user apache. These kinds of users are known as system users.
+Normal user
+Normal users are the users created by root user. They are normal users like maha, raj etc. Only the root user has the permission to create or remove a user. We can make normal user as sudo user by root.
+
+
+*  Whenever a user is created in Linux, what are things created by default:-
+ 1.A home directory is created(/home/username)
+ 2.A mail box is created(/var/spool/mail)
+ 3.unique UID,
+ 4.unique GID are given to user
+
+* Linux uses UPG (User Private Group) scheme
+
+  It means that whenever a user is created is has its own private group
+ For Example if a user is created with the name maha, then a primary group for that user will be maha only
+
+** Important files for user
+ /etc/passwd : in this file maintain username information
+ /etc/shadow : in this file maintain password information

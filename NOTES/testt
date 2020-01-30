@@ -1,0 +1,6 @@
+   http://us.mirrors.quenda.co/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz
+   
+   req_tom_version: 9.0.27
+   
+   http://us.mirrors.quenda.co/apache/tomcat/tomcat-{{req_tom_version.split('.')[0]}}/v{{req_tom_version}}/bin/apache-tomcat-{{req_tom_version}}.tar.gz
+   

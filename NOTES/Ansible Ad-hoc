@@ -1,0 +1,13 @@
+************************AD HOC******************************************88
+* Ad-hoc commands is used to do simple quick task in a command line it self.
+
+   Syntax :  command hostgroupname modules/aruguments(optional)
+   example:  ansible all           -m ping
+         * ansible all -a uptime
+		 * ansible all -a "uname -a"
+		 * ansible all -m user -a "name=nag password=passwd"  (we can create the user and password)
+		 
+		 
+		 
+NoTE: to see commands in ansible type ansible-doc -l |more |wc -l
+      * ansible-doc -l |more |user to get particular user details

@@ -1,0 +1,10 @@
+---
+- name: On linux create the file
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: create file in node machine
+    file:
+     path: /home/ansible/nag.txt
+     state: touch
+     

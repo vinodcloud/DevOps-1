@@ -1,0 +1,46 @@
+---
+- name: Install the tomcat and configure
+  hosts: 172.31.12.93
+  gather_facts: false
+  become: yes
+  vars:
+    req_java: openjdk-8-jre
+    set_java: java-1.8.0-openjdk-amd64
+    req_tom_version: 9.0.27
+    tomcat_port: 8099
+    tomcat_url: http://us.mirrors.quenda.co/apache/tomcat/tomcat-{{req_tom_version.split('.')[0]}}/v{{req_tom_version}}/bin/apache-tomcat-{{req_tom_version}}.tar.gz
+  tasks:
+  - name: updating the repos
+    apt:
+      name: "*"
+      state: latest
+  - name: install the java
+    apt:
+      name: "{{req_java}}"
+      state: present    
+  - name: setting the java default
+    alternatives:                # It will set java version which we want
+      name: java
+      link: /usr/bin/java
+      path: /usr/lib/jvm/{{set_java}}/bin/java
+  - name: Downloading the tomcat server
+    get_url:
+      url: "{{tomcat_url}}"
+      dest: /usr/local  
+  - name: remove directory latest 
+    file:
+      path: /usr/local/latest
+      state: absent
+  - name: Extracted the tomcat
+    unarchive:
+      src: "/usr/local/apache-tomcat-{{req_tom_version}}.tar.gz"
+      dest: /usr/local
+      remote_src: yes         
+  - name: Remaining the apache-tomcat-9.0.27 to latest
+    command: mv /usr/local/apache-tomcat-{{req_tom_version}} /usr/local/latest
+  - name: Changing the default port to requried port
+    template:
+      src: server.xml.j2
+      dest: /usr/local/latest/conf/server.xml
+  - name: start the tomcat server
+    shell: nohup /usr/local/latest/bin/startup.sh &   # it will run in background when we apply nohup and &

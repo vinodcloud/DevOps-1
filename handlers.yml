@@ -1,0 +1,23 @@
+# we can reuse the code with the help of handlers by using notify ( ubuntu)
+---
+- hosts: webservers
+  become: yes
+  tasks:
+  - name: Install apache2
+    apt:
+     name: apache2
+     state: present
+    notify: start services                     
+     
+  - name: copy index.j2 to node server
+    template:
+     src: index.j2
+     dest: /var/www/html/index.html
+    notify: start services 
+      # under playbook we are going to write handlers 
+  handlers:                            # it will trigger if any changies in task
+  - name: start services
+    service:
+     name: apache2
+     state: restarted   
+  

@@ -1,0 +1,11 @@
+* create one security group in vpc
+* Take default vpc
+* create Elastic file system and select the subnets as well as change the secuirty groups
+* Lunch the two instance with two different subnets and give the exitisng security groups which we have created
+* And connect the two instance with git 
+* type sudo -i
+
+
+
+
+NOTE : check in the EFS instructions given below in aws

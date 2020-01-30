@@ -1,0 +1,7 @@
+---
+installjava: java-1.8.0-openjdk
+javastate: present
+installapache2: httpd
+webserverstart: started
+installtree: tree
+javaabsent: absent

@@ -1,0 +1,14 @@
+---
+- name: install apache2 in ubuntu
+  apt:
+   name: "{{install_apache_ubuntu}}"
+   state: present
+  notify: service apache2 restart
+  when: ansible_os_family =="Debian"
+
+- name: install http in redhat
+  yum:
+   name: "{{install_http_redhat}}"
+   state: present
+  notify: service http restart
+  when: ansible_os_family =="RedHat"   

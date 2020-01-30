@@ -1,0 +1,17 @@
+---
+- hosts: tag_name_ubuntunode
+  become: yes
+  tasks:
+  - name: create instance by ansible
+    ec2:
+     key_name: ohio
+     instance_type: t2.micro
+     image: ami-gshyyru7r5d
+     wait: yes
+     group: webserver
+     region: us-east-2
+     instance_tags:
+        Name: dynamic_nodes
+     count: 1
+     vpc_subnet_id: subnet-29e63245
+     assign_public_ip: yes

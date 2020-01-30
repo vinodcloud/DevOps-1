@@ -1,0 +1,8 @@
+---
+- name: update permissions for class path
+  file:
+   path: /etc/profile.d/mavenenv.sh
+   state: directory
+   recurse: yes
+   mode: +x
+  notify: restart maven 
